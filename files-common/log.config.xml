@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <log4net>
-  <appender name="RollingFile" type="Common.Logging.AsyncRollingFileAppender">
-    <file value="${logfilename}" />
+  <appender name="RollingFile" type="Common.Logging.AsyncRollingFileAppender, Common">
+    <file type="log4net.Util.PatternString" value="%property{logfilename}" />
 	<lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
     <appendToFile value="true" />
     <immediateFlush value="true" />

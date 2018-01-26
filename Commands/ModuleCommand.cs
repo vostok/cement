@@ -3,12 +3,13 @@ using log4net;
 using System;
 using System.IO;
 using System.Linq;
+using Common.Logging;
 
 namespace Commands
 {
     public class ModuleCommand : ICommand
     {
-        private static readonly ILog Log = LogManager.GetLogger("moduleCommand");
+        private static readonly ILog Log = LogHelper.GetLogger("moduleCommand");
         private string command;
         private string moduleName;
         private string pushUrl, fetchUrl;

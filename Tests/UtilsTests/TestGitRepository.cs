@@ -1,6 +1,7 @@
 using System.IO;
 using System.Linq;
 using Common;
+using Common.Logging;
 using log4net;
 using NUnit.Framework;
 using Tests.Helpers;
@@ -10,7 +11,7 @@ namespace Tests.UtilsTests
     [TestFixture]
     public class TestGitRepository
     {
-        private static readonly ILog Log = LogManager.GetLogger("TestBuildDepsOrder");
+        private static readonly ILog Log = LogHelper.GetLogger("TestBuildDepsOrder");
 
         private static void CreateTempRepo(TempDirectory url)
         {

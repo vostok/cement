@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using log4net;
 using log4net.Config;
 
@@ -9,6 +10,11 @@ namespace Common.Logging
     public static class LogHelper
     {
         public static bool HasInitializedLogging;
+
+        public static ILog GetLogger(string name)
+        {
+            return LogManager.GetLogger(Assembly.GetEntryAssembly(), name);
+        }
 
         public static void InitializeFileAndElkLogging(string logFileName)
         {
@@ -30,6 +36,7 @@ namespace Common.Logging
                 ? Path.Combine(Helper.GetGlobalCementDirectory(), "log", "log")
                 : Path.Combine(Helper.CurrentWorkspace, Helper.CementDirectory, "log", logFileName);
             Environment.SetEnvironmentVariable("logfilename", logFileName);
+            GlobalContext.Properties["logfilename"] = logFileName;
 
             var logConfig = Path.Combine(Helper.GetCementInstallDirectory(), "dotnet", "log.config.xml");
             if (!File.Exists(logConfig))
@@ -37,8 +44,10 @@ namespace Common.Logging
                 ConsoleWriter.WriteError($"{logConfig} not found.");
                 return;
             }
-
-            XmlConfigurator.ConfigureAndWatch(new FileInfo(logConfig));
+            //var repo = LogManager.CreateRepository(Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
+            var repo = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            repo.Properties["logfilename"] = logFileName;
+            XmlConfigurator.ConfigureAndWatch(repo, new FileInfo(logConfig));
         }
 
         public static void SaveLog(string log)

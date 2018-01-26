@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using Common;
@@ -95,7 +95,7 @@ namespace Commands
 
         private void InitLogging()
         {
-            Log = new PrefixAppender(CommandSettings.LogPerfix, LogManager.GetLogger(GetType().Name));
+            Log = new PrefixAppender(CommandSettings.LogPerfix, LogHelper.GetLogger(GetType().Name));
             if (CommandSettings.LogFileName != null)
                 LogHelper.InitializeFileAndElkLogging(CommandSettings.LogFileName);
             else if (!CommandSettings.NoElkLog)

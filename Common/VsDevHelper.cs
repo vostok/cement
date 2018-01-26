@@ -1,15 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Common.Logging;
 using log4net;
 
 namespace Common
 {
     public static class VsDevHelper
     {
-        private static readonly ILog Log = LogManager.GetLogger("vsDevCmd");
+        private static readonly ILog Log = LogHelper.GetLogger("vsDevCmd");
 
         public static Dictionary<string, string> GetCurrentSetVariables()
         {

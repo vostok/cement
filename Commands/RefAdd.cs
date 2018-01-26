@@ -133,17 +133,17 @@ namespace Commands
         {
             var projectPath = Path.GetFullPath(project);
 
-            try
-            {
-                var currentModuleDirectory = Helper.GetModuleDirectory(Directory.GetCurrentDirectory());
-                var packagesDirectory = Path.Combine(currentModuleDirectory, "packages");
-                new NuGetPackageHepler(Log).InstallPackages(installData.NuGetPackages, packagesDirectory, projectPath);
-            }
-            catch (Exception e)
-            {
-                ConsoleWriter.WriteWarning($"Installation of NuGet packages failed: {e.InnerException?.Message ?? e.Message}");
-                Log.Error("Installation of NuGet packages failed:", e);
-            }
+            //try
+            //{
+            //    var currentModuleDirectory = Helper.GetModuleDirectory(Directory.GetCurrentDirectory());
+            //    var packagesDirectory = Path.Combine(currentModuleDirectory, "packages");
+            //    new NuGetPackageHepler(Log).InstallPackages(installData.NuGetPackages, packagesDirectory, projectPath);
+            //}
+            //catch (Exception e)
+            //{
+            //    ConsoleWriter.WriteWarning($"Installation of NuGet packages failed: {e.InnerException?.Message ?? e.Message}");
+            //    Log.Error("Installation of NuGet packages failed:", e);
+            //}
 
             var csproj = new ProjectFile(projectPath);
 

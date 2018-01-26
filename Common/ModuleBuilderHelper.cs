@@ -1,15 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Common.Logging;
 using log4net;
 
 namespace Common
 {
     public static class ModuleBuilderHelper
     {
-        private static readonly ILog Log = LogManager.GetLogger("moduleBuilderHelper");
+        private static readonly ILog Log = LogHelper.GetLogger("moduleBuilderHelper");
 
         public static string FindMsBuild(string version, string moduleName)
         {

@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Common.Logging;
 using Common.YamlParsers;
 using log4net;
 
@@ -9,7 +10,7 @@ namespace Common
 {
     public static class HooksHelper
     {
-        private static readonly ILog Log = new PrefixAppender("HOOKS", LogManager.GetLogger("HooksHelper"));
+        private static readonly ILog Log = new PrefixAppender("HOOKS", LogHelper.GetLogger("HooksHelper"));
         private const string CementPreCommitHookName = "pre-commit.cement";
 
         public static bool InstallHooks(string moduleName)

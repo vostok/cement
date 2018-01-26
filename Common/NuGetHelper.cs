@@ -34,13 +34,14 @@ namespace Common
 
         public static string GetNugetRunCommand()
         {
-            var nuGetPath = GetNuGetPath();
-            if (nuGetPath == null)
-                return null;
-            var nugetCommand = $"\"{nuGetPath}\"";
-            if (Helper.OsIsUnix())
-                nugetCommand = $"mono {nugetCommand}";
-            return nugetCommand;
+            return "dotnet nuget";
+            //var nuGetPath = GetNuGetPath();
+            //if (nuGetPath == null)
+            //    return null;
+            //var nugetCommand = $"\"{nuGetPath}\"";
+            //if (Helper.OsIsUnix())
+            //    nugetCommand = "dotnet nuget";
+            //return nugetCommand;
         }
 
         private static string GetNuGetPath()

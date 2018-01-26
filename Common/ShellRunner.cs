@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Management;
 using System.Security;
 using System.Text;
 using System.Threading;
@@ -133,8 +132,8 @@ namespace Common
 
                     if (!threadOutput.Join(timeout) || !threadErrors.Join(timeout) || !process.WaitForExit((int) timeout.TotalMilliseconds))
                     {
-                        threadOutput.Abort();
-                        threadErrors.Abort();
+                        //threadOutput.Abort();
+                        //threadErrors.Abort();
                         KillProcessAndChildren(process.Id, new HashSet<int>());
                         HasTimeout = true;
 
@@ -171,15 +170,6 @@ namespace Common
             if (killed.Contains(pid))
                 return;
             killed.Add(pid);
-
-            var searcher = new ManagementObjectSearcher
-                ("Select * From Win32_Process Where ParentProcessID=" + pid);
-            var moc = searcher.Get();
-            foreach (var mo in moc)
-            {
-                int child = Convert.ToInt32(mo["ProcessID"]);
-                KillProcessAndChildren(child, killed);
-            }
 
             try
             {

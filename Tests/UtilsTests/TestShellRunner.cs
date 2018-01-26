@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -71,7 +71,7 @@ namespace Tests.UtilsTests
         }
 
         [Test]
-        public async void TimeMultiThreads()
+        public void TimeMultiThreads()
         {
             var sw = Stopwatch.StartNew();
 
@@ -80,7 +80,7 @@ namespace Tests.UtilsTests
             {
                 tasks.Add(Task.Run(() => new ShellRunner().Run("ping 127.0.0.1 -n 2 > nul", TimeSpan.FromSeconds(1))));
             }
-            await Task.WhenAll(tasks);
+            Task.WaitAll(tasks.ToArray());
             sw.Stop();
             Assert.That(sw.Elapsed.TotalSeconds < 10);
         }

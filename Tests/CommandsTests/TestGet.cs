@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using Common;
+using Common.Logging;
 using Common.YamlParsers;
 using log4net;
 using NUnit.Framework;
@@ -11,7 +12,7 @@ namespace Tests.CommandsTests
     [TestFixture]
     public class TestGet
     {
-        private static ILog Log = LogManager.GetLogger("TestModuleGetter");
+        private static ILog Log = LogHelper.GetLogger("TestModuleGetter");
 
         [Test]
         public void TestGetDepsSimple()

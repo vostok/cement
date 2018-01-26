@@ -1,13 +1,14 @@
-﻿using System;
+using System;
 using System.IO;
 using Common;
+using Common.Logging;
 using log4net;
 
 namespace Commands
 {
     public class IdCommand : ICommand
     {
-        private static readonly ILog Log = LogManager.GetLogger("id");
+        private static readonly ILog Log = LogHelper.GetLogger("id");
 
         public int Run(string[] args)
         {

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using log4net;
@@ -305,20 +303,22 @@ namespace Common
 
         public static string Encrypt(string password)
         {
-            byte[] passwordBytes = Encoding.Unicode.GetBytes(password);
+            return password;
+            //byte[] passwordBytes = Encoding.Unicode.GetBytes(password);
 
-            byte[] cipherBytes = ProtectedData.Protect(passwordBytes, null, DataProtectionScope.CurrentUser);
+            //byte[] cipherBytes = ProtectedData.Protect(passwordBytes, null, DataProtectionScope.CurrentUser);
 
-            return Convert.ToBase64String(cipherBytes);
+            //return Convert.ToBase64String(cipherBytes);
         }
 
         public static string Decrypt(string cipher)
         {
-            byte[] cipherBytes = Convert.FromBase64String(cipher);
+            return cipher;
+            //byte[] cipherBytes = Convert.FromBase64String(cipher);
 
-            byte[] passwordBytes = ProtectedData.Unprotect(cipherBytes, null, DataProtectionScope.CurrentUser);
+            //byte[] passwordBytes = ProtectedData.Unprotect(cipherBytes, null, DataProtectionScope.CurrentUser);
 
-            return Encoding.Unicode.GetString(passwordBytes);
+            //return Encoding.Unicode.GetString(passwordBytes);
         }
 
         public static string FixLineEndings(string text)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Common;
 using NUnit.Framework;
 
@@ -63,6 +63,7 @@ namespace Tests.UtilsTests
             Assert.AreEqual("1.000", Helper.ConvertTime(1000));
         }
 
+        /*
         [Test]
         public void TestEncrypt()
         {
@@ -72,5 +73,6 @@ namespace Tests.UtilsTests
             Assert.AreEqual(text, dec);
             Assert.AreNotEqual(text, enc);
         }
+        */
     }
 }

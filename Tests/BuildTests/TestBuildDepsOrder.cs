@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Common;
+using Common.Logging;
 using Common.YamlParsers;
 using log4net;
 using NUnit.Framework;
@@ -12,7 +13,7 @@ namespace Tests.BuildTests
     [TestFixture]
     public class TestBuildDepsOrder
     {
-        private static readonly ILog Log = LogManager.GetLogger("TestBuildDepsOrder");
+        private static readonly ILog Log = LogHelper.GetLogger("TestBuildDepsOrder");
 
         [Test]
         public void TestTopSortCycle()

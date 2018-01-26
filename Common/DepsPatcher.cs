@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using Common.Logging;
 using Common.YamlParsers;
 using log4net;
 
@@ -265,7 +267,7 @@ namespace Common
 
     public static class DepsPatcherProject
     {
-        private static readonly ILog Log = new PrefixAppender("DEPS PATCH", LogManager.GetLogger("FixReferences"));
+        private static readonly ILog Log = new PrefixAppender("DEPS PATCH", LogHelper.GetLogger("FixReferences"));
 
         public static void PatchDepsForProject(string currentModuleFullPath, Dep dep, string csprojFile)
         {
